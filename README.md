@@ -1,90 +1,98 @@
-Fraud Detection Using Machine Learning
+# Sistema de Deteccao de Fraudes Bancarias
 
-This project uses Machine Learning to detect potentially fraudulent financial transactions.
+Modelo de machine learning para deteccao de transacoes fraudulentas, com interface interativa construida em Streamlit. O projeto atingiu 94% de acuracia na identificacao de fraudes em transacoes financeiras.
 
-The project was developed using Python and includes data analysis, feature engineering, model training and a Streamlit application for making predictions.
+---
 
-About the Project
+## Sobre o Projeto
 
-The goal of this project is to train a Machine Learning model that can classify financial transactions as fraudulent or legitimate.
+Este projeto aplica tecnicas de ciencia de dados e aprendizado de maquina para identificar padroes suspeitos em transacoes bancarias. A partir de um dataset real com milhoes de transacoes, foram realizadas etapas de pre-processamento, feature engineering, selecao e avaliacao de modelos, resultando em um pipeline treinado e servido via interface web.
 
-The model uses information such as:
+---
 
-Transaction type
-Transaction amount
-Origin account balance
-Destination account balance
+## Funcionalidades
 
-Dataset
+- Classificacao de transacoes como fraude ou legitima em tempo real
+- Interface web interativa via Streamlit
+- Suporte a 5 tipos de transacao: Pagamento, Transferencia, Saque, Debito e Deposito
+- Pipeline de ML serializado com joblib para inferencia rapida
 
-The dataset contains financial transaction records with information about transactions and account balances.
+---
 
-Some of the main columns used in the project are:
+## Tecnologias Utilizadas
 
-type
-amount
-oldbalanceOrg
-newbalanceOrig
-oldbalanceDest
-newbalanceDest
-isFraud
+| Tecnologia | Uso |
+|---|---|
+| Python 3.x | Linguagem principal |
+| Pandas | Manipulacao e analise de dados |
+| Scikit-learn | Treinamento do modelo e pipeline |
+| Matplotlib | Visualizacao exploratoria |
+| Streamlit | Interface web |
+| Joblib | Serializacao do modelo |
 
-The isFraud column is the target used to identify fraudulent transactions.
+---
 
-Feature Engineering
+## Estrutura do Projeto
 
-Two new features were created during the data preparation:
+```
+ProjetoFraude/
+├── app.py                          # Interface Streamlit
+├── pipeline_detecçao_fraude.pkl    # Modelo treinado
+├── notebook.ipynb                  # Analise exploratoria e treinamento
+├── requirements.txt                # Dependencias do projeto
+└── README.md
+```
 
-balanceDiffOrig: difference between the origin account balance before and after the transaction
-balanceDiffDest: difference between the destination account balance after and before the transaction
+O dataset nao esta incluido no repositorio por exceder o limite de tamanho do GitHub (470 MB). Faca o download pelo link abaixo.
 
-These features are also calculated in the Streamlit application before making a prediction.
+---
 
-Model
+## Dataset
 
-After preparing the data, a Machine Learning model was trained and saved as fraud_detection_model.pkl.
+Fraud Detection Dataset — disponivel no Kaggle:
 
-The application loads this model and uses it to make predictions on new transactions.
+https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset?resource=download
 
-Results
+Apos o download, coloque o arquivo CSV na pasta `Dataframe/` na raiz do projeto.
 
-The model achieved approximately 94% accuracy during the evaluation.
+---
 
-Accuracy was used as one of the evaluation metrics. Other metrics such as precision, recall and F1-score can also be useful when evaluating a fraud detection model.
+## Como Executar
 
-Streamlit Application
+1. Clone o repositorio:
+```bash
+git clone https://github.com/ArthurTheWorld/ProjetoFraude.git
+cd ProjetoFraude
+```
 
-The project includes a Streamlit application where the user can enter information about a transaction.
+2. Crie e ative um ambiente virtual:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
-The application asks for:
-
-Transaction type
-Transaction amount
-Origin account balance before the transaction
-Origin account balance after the transaction
-Destination account balance before the transaction
-Destination account balance after the transaction
-
-After entering the information, the application uses the trained model to predict whether the transaction is fraudulent or legitimate.
-
-How to Run
-
-First, install the required libraries:
-
+3. Instale as dependencias:
+```bash
 pip install -r requirements.txt
+```
 
-Then run the Streamlit application:
+4. Execute a aplicacao:
+```bash
+streamlit run app.py
+```
 
-streamlit run fraud_detection.py
+---
 
-The Jupyter Notebook used during the project is also included in the repository.
+## Resultados
 
-Possible Improvements
+- Precisão: 94%
+- Modelo treinado com tecnicas de balanceamento de classes e feature engineering sobre diferencas de saldo (balanceDiffOrig, balanceDiffDest)
 
-Some things that could be improved in the future:
+---
 
-Test other Machine Learning models
-Tune the model parameters
-Add more evaluation metrics
-Improve the Streamlit interface
-Deploy the application online
+## Autor
+
+Luiz Arthur Rufino Rodrigues
+Junior Data Engineer
+
+
