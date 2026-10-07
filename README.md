@@ -88,7 +88,3 @@ Tune the model parameters
 Add more evaluation metrics
 Improve the Streamlit interface
 Deploy the application online
-
-Author
-
-CetaminaxKira
